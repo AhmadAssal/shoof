@@ -15,6 +15,5 @@ const Template: ComponentStory<typeof MediaCard> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  primary: true,
   title: "The Dark Knight Rises",
 };
