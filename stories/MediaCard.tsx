@@ -10,8 +10,6 @@ interface MediaCardProps {
 
   imdbRating: number;
 
-  userRating: number;
-
   trailerUrl: string;
 
   genres: string[];
@@ -20,21 +18,21 @@ interface MediaCardProps {
 export const MediaCard = ({
   title = "The Dark Knight",
   imdbRating = 9.0,
-  userRating = 9.2,
-  imageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+  imageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pE8CScObQURsFZ723PSW1K9EGYp.jpg",
   trailerUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   genres = ["Action", "Superhero", "Drama"],
 }: MediaCardProps) => {
   return (
-    <div className="group bg-blue-600 w-auto max-w-pic">
+    <div className="rounded-lg bg-black w-auto max-w-pic">
       <img
-        className=" h-64 w-60 object-cover"
+        className=" h-64 w-60 object-cover rounded-t-lg"
         src={imageUrl}
         alt="The Dark Knight Poster"
       ></img>
       <ReactStars
         count={5}
-        value={5}
+        value={imdbRating / 2}
+        half={true}
         size={30}
         edit={false}
         className="mx-auto w-full -my-6 flex justify-center "
@@ -42,14 +40,15 @@ export const MediaCard = ({
       <h1 className="text-white mx-auto text-center w-full mt-4 text-2xl">
         {title}
       </h1>
-      <div
+      {/* <div
         id="genre_div"
         className="max-w-min justify-center mx-auto items-center flex flex-wrap"
       >
         {genres.map((genre, index) => (
           <GenreButton title={genre} key={index}></GenreButton>
         ))}
-      </div>
+      </div> */}
+      <p className="text-white text-center mx-2">{genres.join(", ")}</p>
       <div className="justify-center mx-auto items-center flex flex-wrap">
         <Button text="Trailer" onClick={() => {}}></Button>
         <Button text="Add" onClick={() => console.log("yo")}></Button>
