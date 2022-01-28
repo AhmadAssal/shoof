@@ -23,7 +23,7 @@ export const MediaCard = ({
   genres = ["Action", "Superhero", "Drama"],
 }: MediaCardProps) => {
   return (
-    <div className="rounded-lg bg-black w-auto max-w-pic">
+    <div className="rounded-lg bg-black w-auto max-w-pic ">
       <img
         className=" h-64 w-60 object-cover rounded-t-lg"
         src={imageUrl}
@@ -48,7 +48,7 @@ export const MediaCard = ({
           <GenreButton title={genre} key={index}></GenreButton>
         ))}
       </div> */}
-      <p className="text-white text-center mx-2">{genres.join(", ")}</p>
+      {/* <p className="text-white text-center mx-2">{genres.join(", ")}</p> */}
       <div className="justify-center mx-auto items-center flex flex-wrap">
         <Button text="Trailer" onClick={() => {}}></Button>
         <Button text="Add" onClick={() => console.log("yo")}></Button>
