@@ -24,7 +24,7 @@ export const MediaCard = ({
   userRating = 9.2,
   imageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
   trailerUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
-}) => {
+}: MediaCardProps) => {
   return (
     <div className="group bg-blue-600 w-max">
       <img
