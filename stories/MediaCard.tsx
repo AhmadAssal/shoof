@@ -32,7 +32,9 @@ export const MediaCard = ({
         src={imageUrl}
         alt="The Dark Knight Poster"
       ></img>
-      <h1 className="text-white mx-auto text-center ">{title}</h1>
+      <h1 className="text-white mx-auto text-center justify-center w-full my-2">
+        {title}
+      </h1>
     </div>
   );
 };
