@@ -26,10 +26,13 @@ export const MediaCard = ({
   trailerUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
 }) => {
   return (
-    <img
-      className="m-2 h-64 w-48"
-      src={imageUrl}
-      alt="The Dark Knight Poster"
-    ></img>
+    <div className="group bg-blue-600 w-max">
+      <img
+        className=" h-64 w-48"
+        src={imageUrl}
+        alt="The Dark Knight Poster"
+      ></img>
+      <h1 className="text-white mx-auto text-center ">{title}</h1>
+    </div>
   );
 };
