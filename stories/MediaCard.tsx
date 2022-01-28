@@ -1,7 +1,7 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
 import ReactStars from "react-stars";
-
+import { GenreButton } from "./GenreButton";
 interface MediaCardProps {
   imageUrl: string;
 
@@ -25,9 +25,9 @@ export const MediaCard = ({
   genres = ["Action", "Superhero", "Drama"],
 }: MediaCardProps) => {
   return (
-    <div className="group bg-blue-600 w-max">
+    <div className="group bg-blue-600 w-auto max-w-pic">
       <img
-        className=" h-64 w-48"
+        className=" h-64 w-60 object-cover"
         src={imageUrl}
         alt="The Dark Knight Poster"
       ></img>
@@ -36,12 +36,19 @@ export const MediaCard = ({
         value={5}
         size={30}
         edit={false}
-        className="justify-items-center  mx-auto w-full -my-6 flex justify-center "
+        className="mx-auto w-full -my-6 flex justify-center "
       ></ReactStars>
-      <h1 className="text-white mx-auto text-center w-full my-4">{title}</h1>
-      {/* {
-        genres.map(genre => <></>)
-      } */}
+      <h1 className="text-white mx-auto text-center w-full my-4 text-2xl">
+        {title}
+      </h1>
+      <div
+        id="genre_div"
+        className="max-w-min justify-center mx-auto items-center flex flex-wrap"
+      >
+        {genres.map((genre, index) => (
+          <GenreButton title={genre} key={index}></GenreButton>
+        ))}
+      </div>
     </div>
   );
 };
