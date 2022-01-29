@@ -40,15 +40,6 @@ export const MediaCard = ({
       <h1 className="text-white mx-auto text-center w-full mt-4 text-2xl">
         {title}
       </h1>
-      {/* <div
-        id="genre_div"
-        className="max-w-min justify-center mx-auto items-center flex flex-wrap"
-      >
-        {genres.map((genre, index) => (
-          <GenreButton title={genre} key={index}></GenreButton>
-        ))}
-      </div> */}
-      {/* <p className="text-white text-center mx-2">{genres.join(", ")}</p> */}
       <div className="justify-center mx-auto items-center flex flex-wrap">
         <Button text="Trailer" onClick={() => {}}></Button>
         <Button text="Add" onClick={() => console.log("yo")}></Button>
