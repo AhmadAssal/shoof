@@ -25,6 +25,7 @@ export const MediaCard = ({
   genres = ["Action", "Superhero", "Drama"],
 }: MediaCardProps) => {
   const [showModal, setShowModal] = useState(false);
+  const url = "https://www.youtube.com/embed/" + trailerUrl.split("?v=")[1];
   return (
     <div className="rounded-lg bg-black w-auto max-w-pic ">
       <img
@@ -46,9 +47,10 @@ export const MediaCard = ({
       <div className="justify-center mx-auto items-center flex flex-wrap">
         <Button text="Trailer" onClick={() => setShowModal(true)}></Button>
         <TrailerModal
-          text="The Dark Knight"
+          title="The Dark Knight"
+          url={url}
           onClick={() => {
-            setShowModal(true);
+            setShowModal(false);
           }}
           open={showModal}
           onCloseModal={() => {
