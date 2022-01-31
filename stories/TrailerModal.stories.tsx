@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { TrailerModal } from "./TrailerModal";
 
 export default {
-  title: "Example/GenreButton",
+  title: "Example/TrailerModal",
   component: TrailerModal,
 } as ComponentMeta<typeof TrailerModal>;
 
@@ -15,5 +15,8 @@ const Template: ComponentStory<typeof TrailerModal> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  //   title: "Action",
+  text: "why u do dis",
+  open: true,
+  onClick: () => {},
+  onCloseModal: () => {},
 };
