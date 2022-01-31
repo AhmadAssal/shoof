@@ -3,6 +3,8 @@ import "tailwindcss/tailwind.css";
 import ReactStars from "react-stars";
 import { GenreButton } from "./GenreButton";
 import { Button } from "./Button";
+import { TrailerModal } from "./TrailerModal";
+import { useState } from "react";
 interface MediaCardProps {
   imageUrl: string;
 
@@ -22,6 +24,7 @@ export const MediaCard = ({
   trailerUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   genres = ["Action", "Superhero", "Drama"],
 }: MediaCardProps) => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="rounded-lg bg-black w-auto max-w-pic ">
       <img
@@ -41,7 +44,17 @@ export const MediaCard = ({
         {title}
       </h1>
       <div className="justify-center mx-auto items-center flex flex-wrap">
-        <Button text="Trailer" onClick={() => {}}></Button>
+        <Button text="Trailer" onClick={() => setShowModal(true)}></Button>
+        <TrailerModal
+          text="The Dark Knight"
+          onClick={() => {
+            setShowModal(true);
+          }}
+          open={showModal}
+          onCloseModal={() => {
+            setShowModal(false);
+          }}
+        ></TrailerModal>
         <Button text="Add" onClick={() => console.log("yo")}></Button>
       </div>
     </div>
