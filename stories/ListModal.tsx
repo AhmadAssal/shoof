@@ -4,6 +4,7 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { Button } from "./Button";
 import { useState } from "react";
+import { watchlist } from "../interfaces/watchlist";
 interface ListModalProps {
   onCloseButton: () => any;
   open: boolean;
@@ -12,11 +13,6 @@ interface ListModalProps {
   onAdd: () => any;
   isInWatchlist: (mediaId: number, watchlistId: number) => boolean;
   mediaId: number;
-}
-
-interface watchlist {
-  id: number;
-  name: string;
 }
 
 export const ListModal = ({

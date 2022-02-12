@@ -6,6 +6,7 @@ import { Button } from "./Button";
 import { TrailerModal } from "./TrailerModal";
 import { ListModal } from "./ListModal";
 import { useState } from "react";
+import { watchlist } from "../interfaces/watchlist";
 interface MediaCardProps {
   imageUrl: string;
 
@@ -19,11 +20,11 @@ interface MediaCardProps {
 }
 
 export const MediaCard = ({
-  title = "The Dark Knight",
-  imdbRating = 9.0,
-  imageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pE8CScObQURsFZ723PSW1K9EGYp.jpg",
-  trailerUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
-  genres = ["Action", "Superhero", "Drama"],
+  title,
+  imdbRating,
+  imageUrl,
+  trailerUrl,
+  genres,
 }: MediaCardProps) => {
   const [showTrailerModal, setShowTrailerModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
