@@ -17,6 +17,8 @@ interface MediaCardProps {
   trailerUrl: string;
 
   genres: string[];
+
+  watchlists: watchlist[];
 }
 
 export const MediaCard = ({
@@ -24,6 +26,7 @@ export const MediaCard = ({
   imdbRating,
   imageUrl,
   trailerUrl,
+  watchlists,
 }: MediaCardProps) => {
   const [showTrailerModal, setShowTrailerModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
@@ -71,24 +74,7 @@ export const MediaCard = ({
           onCloseModal={() => {
             setShowListModal(false);
           }}
-          watchlists={[
-            {
-              name: "Action",
-              id: 23,
-            },
-            {
-              name: "Comedy",
-              id: 43,
-            },
-            {
-              name: "Romance",
-              id: 53,
-            },
-            {
-              name: "Sci-Fi",
-              id: 63,
-            },
-          ]}
+          watchlists={watchlists}
           onAdd={() => {}}
           isInWatchlist={() => true}
           mediaId={34}
