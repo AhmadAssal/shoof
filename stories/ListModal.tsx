@@ -16,7 +16,6 @@ interface ListModalProps {
 }
 
 export const ListModal = ({
-  onCloseButton,
   open,
   onCloseModal,
   watchlists,
