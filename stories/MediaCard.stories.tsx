@@ -21,4 +21,22 @@ Primary.args = {
   imdbRating: 9.0,
   trailerUrl: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   genres: ["action", "thriller"],
+  watchlists: [
+    {
+      name: "Action",
+      id: 23,
+    },
+    {
+      name: "Comedy",
+      id: 43,
+    },
+    {
+      name: "Romance",
+      id: 53,
+    },
+    {
+      name: "Sci-Fi",
+      id: 63,
+    },
+  ],
 };
