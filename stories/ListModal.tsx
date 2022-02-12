@@ -6,9 +6,9 @@ import { Button } from "./Button";
 import { useState } from "react";
 import { watchlist } from "../interfaces/watchlist";
 interface ListModalProps {
-  onCloseButton: () => any;
+  onCloseButton: () => void;
   open: boolean;
-  onCloseModal: () => any;
+  onCloseModal: () => void;
   watchlists: watchlist[];
   onAdd: () => any;
   isInWatchlist: (mediaId: number, watchlistId: number) => boolean;
