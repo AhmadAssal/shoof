@@ -4,6 +4,7 @@ import ReactStars from "react-stars";
 import { GenreButton } from "./GenreButton";
 import { Button } from "./Button";
 import { TrailerModal } from "./TrailerModal";
+import { ListModal } from "./ListModal";
 import { useState } from "react";
 interface MediaCardProps {
   imageUrl: string;
@@ -24,7 +25,8 @@ export const MediaCard = ({
   trailerUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   genres = ["Action", "Superhero", "Drama"],
 }: MediaCardProps) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showTrailerModal, setShowTrailerModal] = useState(false);
+  const [showListModal, setShowListModal] = useState(false);
   const url = "https://www.youtube.com/embed/" + trailerUrl.split("?v=")[1];
   return (
     <div className="rounded-lg bg-black w-auto max-w-pic ">
@@ -45,19 +47,52 @@ export const MediaCard = ({
         {title}
       </h1>
       <div className="justify-center mx-auto items-center flex flex-wrap">
-        <Button text="Trailer" onClick={() => setShowModal(true)}></Button>
+        <Button
+          text="Trailer"
+          onClick={() => setShowTrailerModal(true)}
+        ></Button>
         <TrailerModal
           title="The Dark Knight"
           url={url}
           onClick={() => {
-            setShowModal(false);
+            setShowTrailerModal(false);
           }}
-          open={showModal}
+          open={showTrailerModal}
           onCloseModal={() => {
-            setShowModal(false);
+            setShowTrailerModal(false);
           }}
         ></TrailerModal>
-        <Button text="Add" onClick={() => console.log("yo")}></Button>
+        <Button text="Add" onClick={() => setShowListModal(true)}></Button>
+        <ListModal
+          onCloseButton={() => {
+            setShowListModal(false);
+          }}
+          open={showListModal}
+          onCloseModal={() => {
+            setShowListModal(false);
+          }}
+          watchlists={[
+            {
+              name: "Action",
+              id: 23,
+            },
+            {
+              name: "Comedy",
+              id: 43,
+            },
+            {
+              name: "Romance",
+              id: 53,
+            },
+            {
+              name: "Sci-Fi",
+              id: 63,
+            },
+          ]}
+          onAdd={() => {}}
+          isInWatchlist={() => true}
+          mediaId={34}
+        ></ListModal>
       </div>
     </div>
   );
