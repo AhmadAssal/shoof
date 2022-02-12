@@ -24,7 +24,6 @@ export const MediaCard = ({
   imdbRating,
   imageUrl,
   trailerUrl,
-  genres,
 }: MediaCardProps) => {
   const [showTrailerModal, setShowTrailerModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
