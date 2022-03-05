@@ -19,3 +19,27 @@ export const login = async (identifier: string, password: string) => {
     };
   }
 };
+
+export const register = async (
+  username: string,
+  email: string,
+  password: string
+) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url: process.env.REGISTER_URL,
+      data: {
+        username,
+        email,
+        password,
+      },
+    });
+    return { status: "register successful", data: response.data };
+  } catch (error: any) {
+    return {
+      status: "failed to register",
+      message: error.response.data.error.message,
+    };
+  }
+};
