@@ -64,7 +64,24 @@ export const search = async (query: string) => {
   }
 };
 
-// const call_search = async () => {
-//   console.log((await search("Spider-Man")).data.results);
-// };
-// call_search();
+export const getTrending = async () => {
+  try {
+    const response = await axios.get(process.env.TMDB_TRENDING_URL, {
+      params: {
+        api_key: process.env.TMDB_API_KEY,
+        language: "en-US",
+      },
+    });
+    return { status: "Data retrieved", data: response.data };
+  } catch (error: any) {
+    return {
+      status: "failed to get data",
+      message: error,
+    };
+  }
+};
+
+const call_search = async () => {
+  console.log((await getTrending()).data);
+};
+call_search();
