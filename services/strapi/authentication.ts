@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-dotenv.config({ path: "../" + "/.env" });
+dotenv.config({ path: "../../" + "/.env" });
 const axios = require("axios").default;
 export const login = async (identifier: string, password: string) => {
   try {
