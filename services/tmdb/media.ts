@@ -10,6 +10,7 @@ export const getMovie = async (movieId: number) => {
         params: {
           api_key: process.env.TMDB_API_KEY,
           language: "en-US",
+          append_to_response: "videos",
         },
       }
     );
