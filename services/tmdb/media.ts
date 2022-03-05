@@ -21,8 +21,3 @@ export const getMovie = async (movieId: number) => {
     };
   }
 };
-
-const call_get_movie = async () => {
-  console.log(await getMovie(155));
-};
-call_get_movie();
