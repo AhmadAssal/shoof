@@ -1,6 +1,4 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: ".." + "/.env" });
-const axios = require("axios").default;
+import axios from "axios";
 export const login = async (identifier: string, password: string) => {
   try {
     const response = await axios({
