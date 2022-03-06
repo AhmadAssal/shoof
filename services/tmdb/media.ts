@@ -1,14 +1,11 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: ".." + "/.env" });
-const axios = require("axios").default;
-// console.log(process.env.TMDB_MOVIE_URL);
+import axios from "axios";
 export const getMovie = async (movieId: number) => {
   try {
     const response = await axios.get(
-      process.env.TMDB_MOVIE_URL + "/" + movieId,
+      process.env.NEXT_PUBLIC_TMDB_MOVIE_URL + "/" + movieId,
       {
         params: {
-          api_key: process.env.TMDB_API_KEY,
+          api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
           language: "en-US",
           append_to_response: "videos",
         },
@@ -66,7 +63,7 @@ export const search = async (query: string) => {
 
 export const getTrending = async () => {
   try {
-    const response = await axios.get(process.env.TMDB_TRENDING_URL, {
+    const response = await axios.get(process.env.TMDB_TRENDING_URL as string, {
       params: {
         api_key: process.env.TMDB_API_KEY,
         language: "en-US",
