@@ -12,15 +12,23 @@ import { getMovie, getShow } from "../services/tmdb/media";
 export const MediaCard = ({
   mediaId,
   mediaType,
-  title,
-  imdbRating,
-  imageUrl,
-  trailerUrl,
   watchlists,
 }: MediaCardProps) => {
   const [showTrailerModal, setShowTrailerModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
-  const url = "https://www.youtube.com/embed/" + trailerUrl.split("?v=")[1];
+  const [imageUrl, setImageUrl] = useState("");
+  const [imdbRating, setImdbRating] = useState(0);
+  const [title, setTitle] = useState("");
+  const url = "https://www.youtube.com/embed/";
+
+  useEffect(() => {
+    if (mediaType === "show") {
+      const response = getShow(mediaId);
+    } else {
+      const response = getMovie(mediaId);
+    }
+  }, []);
+
   return (
     <div className="rounded-lg bg-black w-auto max-w-pic ">
       <img
