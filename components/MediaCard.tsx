@@ -11,6 +11,7 @@ import { MediaCardProps } from "../interfaces/MediaCardProps";
 import { getMovie, getShow } from "../services/tmdb/media";
 export const MediaCard = ({
   mediaId,
+  mediaType,
   title,
   imdbRating,
   imageUrl,

@@ -1,5 +1,7 @@
 import { watchlist } from "../interfaces/watchlist";
 export interface MediaCardProps {
+  mediaType: number;
+
   mediaId: number;
 
   imageUrl: string;
