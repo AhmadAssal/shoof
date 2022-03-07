@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "tailwindcss/tailwind.css";
 import ReactStars from "react-stars";
 import { GenreButton } from "./GenreButton";
@@ -8,7 +8,7 @@ import { ListModal } from "./ListModal";
 import { useState } from "react";
 import { watchlist } from "../interfaces/watchlist";
 import { MediaCardProps } from "../interfaces/MediaCardProps";
-
+import { getMovie, getShow } from "../services/tmdb/media";
 export const MediaCard = ({
   mediaId,
   title,
