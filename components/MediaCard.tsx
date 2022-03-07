@@ -10,6 +10,7 @@ import { watchlist } from "../interfaces/watchlist";
 import { MediaCardProps } from "../interfaces/MediaCardProps";
 
 export const MediaCard = ({
+  mediaId,
   title,
   imdbRating,
   imageUrl,
