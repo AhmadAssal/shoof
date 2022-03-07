@@ -77,8 +77,3 @@ export const getTrending = async () => {
     };
   }
 };
-
-const call_search = async () => {
-  console.log((await getTrending()).data);
-};
-call_search();
