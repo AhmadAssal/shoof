@@ -7,19 +7,7 @@ import { TrailerModal } from "./TrailerModal";
 import { ListModal } from "./ListModal";
 import { useState } from "react";
 import { watchlist } from "../interfaces/watchlist";
-interface MediaCardProps {
-  imageUrl: string;
-
-  title: string;
-
-  imdbRating: number;
-
-  trailerUrl: string;
-
-  genres: string[];
-
-  watchlists: watchlist[];
-}
+import { MediaCardProps } from "../interfaces/MediaCardProps";
 
 export const MediaCard = ({
   title,
