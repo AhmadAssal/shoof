@@ -37,27 +37,33 @@ export const ListModal = ({
 
   return (
     <Modal open={open} onClose={onCloseModal} center closeIcon>
-      {watchlists.map((pl, index) => (
-        <div key={pl.id}>
-          <label htmlFor={pl.name}> {pl.name}</label>
-          <input
-            id={pl.name}
-            type="checkbox"
-            name={pl.name}
-            defaultChecked={chosenWatchlists[index] === 1 ? true : false}
-            value={pl.id}
-            onChange={() => {
-              let newArr = chosenWatchlists;
-              if (newArr[index] == 1) {
-                newArr[index] = 0;
-              } else newArr[index] = 1;
-              setChosenWatchlists(newArr);
-              console.log(chosenWatchlists);
-            }}
-            className="float-right"
-          ></input>
-        </div>
-      ))}
+      {watchlists.length ? (
+        watchlists.map((pl, index) => (
+          <div key={pl.id}>
+            <label htmlFor={pl.name}> {pl.name}</label>
+            <input
+              id={pl.name}
+              type="checkbox"
+              name={pl.name}
+              defaultChecked={chosenWatchlists[index] === 1 ? true : false}
+              value={pl.id}
+              onChange={() => {
+                let newArr = chosenWatchlists;
+                if (newArr[index] == 1) {
+                  newArr[index] = 0;
+                } else newArr[index] = 1;
+                setChosenWatchlists(newArr);
+                console.log(chosenWatchlists);
+              }}
+              className="float-right"
+            ></input>
+          </div>
+        ))
+      ) : (
+        <p>
+          You have no playlists. Create some playlists to add this movie/show.
+        </p>
+      )}
       <div>
         <Button text="Close" onClick={() => onCloseModal()}></Button>
         <Button text="Add" onClick={() => onAdd()}></Button>
