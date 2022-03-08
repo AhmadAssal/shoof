@@ -23,10 +23,10 @@ export const getMovie = async (movieId: number) => {
 export const getShow = async (showId: number) => {
   try {
     const response = await axios.get(
-      process.env.TMDB_SERIES_URL + "/" + showId,
+      process.env.NEXT_PUBLIC_TMDB_SERIES_URL + "/" + showId,
       {
         params: {
-          api_key: process.env.TMDB_API_KEY,
+          api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
           language: "en-US",
           append_to_response: "videos",
         },
