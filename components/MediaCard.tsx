@@ -9,6 +9,7 @@ import { useState } from "react";
 import { watchlist } from "../interfaces/watchlist";
 import { MediaCardProps } from "../interfaces/MediaCardProps";
 import { getMovie, getShow } from "../services/tmdb/media";
+import { TmdbVideoResponse } from "../interfaces/tmdbVideoResponse";
 export const MediaCard = ({
   mediaId,
   mediaType,
@@ -16,16 +17,48 @@ export const MediaCard = ({
 }: MediaCardProps) => {
   const [showTrailerModal, setShowTrailerModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
   const [imdbRating, setImdbRating] = useState(0);
   const [title, setTitle] = useState("");
-  const url = "https://www.youtube.com/embed/";
-
+  const [trailerUrl, setTrailerUrl] = useState(
+    "https://www.youtube.com/embed/"
+  );
+  const [posterUrl, setPosterUrl] = useState(
+    "https://image.tmdb.org/t/p/original"
+  );
   useEffect(() => {
     if (mediaType === "show") {
-      const response = getShow(mediaId);
+      getShow(mediaId).then((response) => {
+        if (response.status === "failed to get show") {
+          setErrorMessage(true);
+        } else {
+          setTitle(response.data.original_title);
+          setImdbRating(response.data.vote_average);
+
+          //extract trailer key
+          const videos = response.data.videos.filter(
+            (video: TmdbVideoResponse) => video.type === "trailer"
+          );
+          setTrailerUrl(trailerUrl + videos[0].key);
+        }
+      });
     } else {
-      const response = getMovie(mediaId);
+      getMovie(mediaId).then((response) => {
+        if (response.status === "failed to get movie") {
+          setErrorMessage(true);
+        } else {
+          console.log(response);
+          setTitle(response.data.original_title);
+          setImdbRating(response.data.vote_average);
+
+          //extract trailer key
+          const videos = response.data.videos.results.filter(
+            (video: TmdbVideoResponse) => video.type === "Trailer"
+          );
+          setTrailerUrl(trailerUrl + videos[0].key);
+          setPosterUrl(posterUrl + response.data.poster_path);
+        }
+      });
     }
   }, []);
 
@@ -33,7 +66,7 @@ export const MediaCard = ({
     <div className="rounded-lg bg-black w-auto max-w-pic ">
       <img
         className=" h-64 w-60 object-cover rounded-t-lg"
-        src={imageUrl}
+        src={posterUrl}
         alt="The Dark Knight Poster"
       ></img>
       <ReactStars
@@ -54,7 +87,7 @@ export const MediaCard = ({
         ></Button>
         <TrailerModal
           title="The Dark Knight"
-          url={url}
+          url={trailerUrl}
           onClick={() => {
             setShowTrailerModal(false);
           }}
