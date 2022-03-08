@@ -26,6 +26,7 @@ export const MediaCard = ({
   const [posterUrl, setPosterUrl] = useState(
     "https://image.tmdb.org/t/p/original"
   );
+  const [trailerExists, setTrailerExists] = useState(true);
   useEffect(() => {
     if (mediaType === "show") {
       getShow(mediaId).then((response) => {
@@ -36,10 +37,15 @@ export const MediaCard = ({
           setImdbRating(response.data.vote_average);
 
           //extract trailer key
-          const videos = response.data.videos.filter(
-            (video: TmdbVideoResponse) => video.type === "trailer"
+          const videos = response.data.videos.results.filter(
+            (video: TmdbVideoResponse) => video.type === "Trailer"
           );
-          setTrailerUrl(trailerUrl + videos[0].key);
+          if (videos?.[0]?.key) {
+            setTrailerUrl(trailerUrl + videos?.[0]?.key);
+          } else {
+            setTrailerExists(false);
+          }
+          setPosterUrl(posterUrl + response.data.poster_path);
         }
       });
     } else {
@@ -47,7 +53,6 @@ export const MediaCard = ({
         if (response.status === "failed to get movie") {
           setErrorMessage(true);
         } else {
-          console.log(response);
           setTitle(response.data.original_title);
           setImdbRating(response.data.vote_average);
 
@@ -82,11 +87,12 @@ export const MediaCard = ({
       </h1>
       <div className="justify-center mx-auto items-center flex flex-wrap">
         <Button
-          text="Trailer"
+          text={trailerExists ? "Trailer" : "No Trailer Found"}
           onClick={() => setShowTrailerModal(true)}
+          disabled={!trailerExists}
         ></Button>
         <TrailerModal
-          title="The Dark Knight"
+          title={title}
           url={trailerUrl}
           onClick={() => {
             setShowTrailerModal(false);
@@ -96,7 +102,11 @@ export const MediaCard = ({
             setShowTrailerModal(false);
           }}
         ></TrailerModal>
-        <Button text="Add" onClick={() => setShowListModal(true)}></Button>
+        <Button
+          text="Add"
+          onClick={() => setShowListModal(true)}
+          disabled={false}
+        ></Button>
         <ListModal
           onCloseButton={() => {
             setShowListModal(false);
