@@ -65,8 +65,12 @@ export const ListModal = ({
         </p>
       )}
       <div>
-        <Button text="Close" onClick={() => onCloseModal()}></Button>
-        <Button text="Add" onClick={() => onAdd()}></Button>
+        <Button
+          text="Close"
+          onClick={() => onCloseModal()}
+          disabled={false}
+        ></Button>
+        <Button text="Add" onClick={() => onAdd()} disabled={false}></Button>
       </div>
     </Modal>
   );
