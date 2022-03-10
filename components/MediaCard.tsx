@@ -33,7 +33,7 @@ export const MediaCard = ({
         if (response.status === "failed to get show") {
           setErrorMessage(true);
         } else {
-          setTitle(response.data.original_title);
+          setTitle(response.data.name);
           setImdbRating(response.data.vote_average);
 
           //extract trailer key
