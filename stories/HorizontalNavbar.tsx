@@ -5,12 +5,7 @@ import Image from "next/image";
 
 export const HorizontalNavbar = () => {
   return (
-    <nav className="bg-black text-white flex h-20 p-2 text-center  items-center">
-      <img
-        src="/Logo.png"
-        alt="Picture of the logo. It consists of a TV (representing series), a clapperboard (representing movies) and the word anime in Japanese"
-        className=" w-fit h-full"
-      ></img>
+    <nav className="text-white flex h-16  w-screen text-center  items-center">
       <a href="/cinema/" className="mx-4">
         Cinema
       </a>
