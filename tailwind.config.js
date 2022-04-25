@@ -9,6 +9,9 @@ module.exports = {
       maxWidth: {
         pic: "12rem",
       },
+      colors: {
+        "navbar-grey": "#72757E",
+      },
     },
   },
   plugins: [],
