@@ -1,13 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { VerticalNavbar } from "./VerticalNavbar";
+import { HorizontalNavbar } from "./HorizontalNavbar";
 export default {
-  title: "Example/VerticalNavbar",
-  component: VerticalNavbar,
-} as ComponentMeta<typeof VerticalNavbar>;
+  title: "Example/HorizontalNavbar",
+  component: HorizontalNavbar,
+} as ComponentMeta<typeof HorizontalNavbar>;
 
-const Template: ComponentStory<typeof VerticalNavbar> = (args) => (
-  <VerticalNavbar />
+const Template: ComponentStory<typeof HorizontalNavbar> = (args) => (
+  <HorizontalNavbar />
 );
 
 export const Primary = Template.bind({});
