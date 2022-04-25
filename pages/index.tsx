@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { HorizontalNavbar } from "../stories/HorizontalNavbar";
-import { VerticalNavbar } from "../stories/VerticalNavbar";
+import { HorizontalNavbar } from "../components/HorizontalNavbar";
+import { VerticalNavbar } from "../components/VerticalNavbar";
 const Home: NextPage = () => {
   return (
     <div className="flex flex-row grow  text-white w-screen">
