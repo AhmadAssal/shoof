@@ -11,6 +11,7 @@ module.exports = {
       },
       colors: {
         "navbar-grey": "#72757E",
+        "purple-button": "#7F5AF0",
       },
     },
   },
