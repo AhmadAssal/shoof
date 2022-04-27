@@ -28,7 +28,7 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setUsername(e.target.value);
           }}
-          className=" rounded-lg text-black px-2 py-1"
+          className="rounded-lg text-black px-2 py-1"
         ></input>
 
         <label htmlFor="email" className=" rounded-lg">
@@ -41,7 +41,7 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          className=" rounded-lg text-black px-2 py-1"
+          className="rounded-lg text-black px-2 py-1"
         ></input>
 
         <label htmlFor="password" className="rounded-lg">
@@ -54,7 +54,7 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          className=" rounded-lg text-black px-2 py-1"
+          className="rounded-lg text-black px-2 py-1"
         ></input>
 
         <label htmlFor="password_confirmation" className=" rounded-lg">
@@ -67,7 +67,7 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setPasswordConfirmation(e.target.value);
           }}
-          className=" rounded-lg text-black px-2 py-1"
+          className="rounded-lg text-black px-2 py-1"
         ></input>
         <button className="rounded-lg bg-purple-button my-4 py-1">
           Register
