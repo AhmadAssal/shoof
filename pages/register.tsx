@@ -2,12 +2,16 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
+import { validator } from "../validations/RegisterValidator";
 
 const Register: NextPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const onRegister = () => {
+    validator(email, username, password, passwordConfirmation);
+  };
 
   return (
     <div className="flex flex-col h-full items-center justify-center">
@@ -69,7 +73,12 @@ const Register: NextPage = () => {
           }}
           className="rounded-lg text-black px-2 py-1"
         ></input>
-        <button className="rounded-lg bg-purple-button my-4 py-1">
+        <button
+          className="rounded-lg bg-purple-button my-4 py-1"
+          onClick={() => {
+            onRegister();
+          }}
+        >
           Register
         </button>
       </div>
