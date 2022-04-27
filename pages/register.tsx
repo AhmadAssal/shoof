@@ -61,7 +61,7 @@ const Register: NextPage = () => {
           Confirm Password
         </label>
         <input
-          id="password"
+          id="password_confirmation"
           type="text"
           value={passwordConfirmation}
           onChange={(e) => {
