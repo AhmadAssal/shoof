@@ -1,8 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 const Register: NextPage = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
   return (
     <div className="flex flex-col h-full items-center justify-center">
       <div className="bg-navbar-grey flex flex-col p-4 rounded-lg">
@@ -18,6 +24,10 @@ const Register: NextPage = () => {
         <input
           id="username"
           type="text"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
           className=" rounded-lg text-black px-2 py-1"
         ></input>
 
@@ -27,6 +37,10 @@ const Register: NextPage = () => {
         <input
           id="email"
           type="text"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
           className=" rounded-lg text-black px-2 py-1"
         ></input>
 
@@ -36,6 +50,10 @@ const Register: NextPage = () => {
         <input
           id="password"
           type="text"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           className=" rounded-lg text-black px-2 py-1"
         ></input>
 
@@ -45,6 +63,10 @@ const Register: NextPage = () => {
         <input
           id="password"
           type="text"
+          value={passwordConfirmation}
+          onChange={(e) => {
+            setPasswordConfirmation(e.target.value);
+          }}
           className=" rounded-lg text-black px-2 py-1"
         ></input>
         <button className="rounded-lg bg-purple-button my-4 py-1">
