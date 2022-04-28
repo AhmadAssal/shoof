@@ -40,7 +40,7 @@ const Register: NextPage = () => {
         </label>
         <input
           id="email"
-          type="text"
+          type="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -53,7 +53,7 @@ const Register: NextPage = () => {
         </label>
         <input
           id="password"
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
@@ -66,7 +66,7 @@ const Register: NextPage = () => {
         </label>
         <input
           id="password_confirmation"
-          type="text"
+          type="password"
           value={passwordConfirmation}
           onChange={(e) => {
             setPasswordConfirmation(e.target.value);
@@ -75,6 +75,7 @@ const Register: NextPage = () => {
         ></input>
         <button
           className="rounded-lg bg-purple-button my-4 py-1"
+          type="submit"
           onClick={() => {
             onRegister();
           }}
