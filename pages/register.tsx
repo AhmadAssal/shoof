@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { FormEvent, useState } from "react";
 import { validator } from "../validations/RegisterValidator";
-
+import { alert } from "../utils/alert";
 const Register: NextPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -28,9 +28,7 @@ const Register: NextPage = () => {
       errorMessages.passwordConfirmation
     ) {
       setMessages(errorMessages);
-      if (typeof window !== "undefined") {
-        window.alert("Please make sure all the input boxes have valid input.");
-      }
+      alert("Please make sure all the input boxes have valid input.");
     } else {
       setMessages({
         username: "",
