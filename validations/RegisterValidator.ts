@@ -4,6 +4,7 @@ export const validator = (
   password: string,
   passwordConfirmation: string
 ) => {
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (!username) {
     if (typeof window !== "undefined") {
       window.alert("Your username can not be empty.");
@@ -16,6 +17,14 @@ export const validator = (
     }
     return;
   }
+
+  if (!emailRegex.test(email)) {
+    if (typeof window !== "undefined") {
+      window.alert("Please enter a valid email.");
+    }
+    return;
+  }
+
   if (!email) {
     if (typeof window !== "undefined") {
       window.alert("Your email can not be empty.");
