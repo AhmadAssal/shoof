@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { validator } from "../validations/RegisterValidator";
 import { ErrorMessages } from "../types/ErrorMessages";
 
@@ -16,111 +16,130 @@ const Register: NextPage = () => {
     password: "",
     passwordConfirmation: "",
   });
-  const onRegister = () => {
+  const onRegister = (e: FormEvent) => {
+    e.preventDefault();
     const errorMessages = validator(
       username,
       email,
       password,
       passwordConfirmation
     );
-    // if (errorMessages.username && errorMessages.email && errorMessages.password && errorMessages.passwordConfirmation)
-    setMessages(errorMessages);
+    if (
+      errorMessages.username ||
+      errorMessages.email ||
+      errorMessages.password ||
+      errorMessages.passwordConfirmation
+    ) {
+      setMessages(errorMessages);
+      if (typeof window !== "undefined") {
+        window.alert("Please make sure all the input boxes have valid input.");
+      }
+    } else {
+      setMessages({
+        username: "",
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+      });
+    }
   };
   const inputStyles = "rounded-lg text-black px-2 py-1";
   const errorStyles = "border-2 border-red-600";
   const errorTextColor = "text-red-300";
   return (
     <div className="flex flex-col h-full items-center justify-center">
-      <div className="bg-navbar-grey flex flex-col p-4 rounded-lg">
-        <img
-          src="/Logo.png"
-          alt="Picture of the logo. It consists of a TV (representing series), a clapperboard (representing movies) and the word anime in Japanese"
-          className=" w-24 h-auto mx-auto"
-        ></img>
-        <h1 className="text-center text-2xl">Register</h1>
+      <form action="" onSubmit={(e) => onRegister(e)}>
+        <div className="bg-navbar-grey flex flex-col p-4 rounded-lg">
+          <img
+            src="/Logo.png"
+            alt="Picture of the logo. It consists of a TV (representing series), a clapperboard (representing movies) and the word anime in Japanese"
+            className=" w-24 h-auto mx-auto"
+          ></img>
+          <h1 className="text-center text-2xl">Register</h1>
 
-        {/* username */}
-        <label htmlFor="username" className=" rounded-lg">
-          Username
-        </label>
-        <input
-          id="username"
-          type="text"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-          className={
-            messages.username === "" ? inputStyles : inputStyles + errorStyles
-          }
-        ></input>
-        <small className={errorTextColor}>{messages.username}</small>
+          {/* username */}
+          <label htmlFor="username" className=" rounded-lg">
+            Username
+          </label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+            className={
+              messages.username === "" ? inputStyles : inputStyles + errorStyles
+            }
+          ></input>
+          <small className={errorTextColor}>{messages.username}</small>
 
-        {/* email */}
-        <label htmlFor="email" className=" rounded-lg">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          className={
-            messages.email === "" ? inputStyles : inputStyles + errorStyles
-          }
-        ></input>
-        <small className={errorTextColor}>{messages.email}</small>
+          {/* email */}
+          <label htmlFor="email" className=" rounded-lg">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            className={
+              messages.email === "" ? inputStyles : inputStyles + errorStyles
+            }
+          ></input>
+          <small className={errorTextColor}>{messages.email}</small>
 
-        {/* password */}
-        <label htmlFor="password" className="rounded-lg">
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          className={
-            messages.password === "" ? inputStyles : inputStyles + errorStyles
-          }
-        ></input>
-        <small className={errorTextColor}>{messages.password}</small>
+          {/* password */}
+          <label htmlFor="password" className="rounded-lg">
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            className={
+              messages.password === "" ? inputStyles : inputStyles + errorStyles
+            }
+          ></input>
+          <small className={errorTextColor}>{messages.password}</small>
 
-        {/* password confirmation */}
-        <label htmlFor="password_confirmation" className=" rounded-lg">
-          Confirm Password
-        </label>
-        <input
-          id="password_confirmation"
-          type="password"
-          value={passwordConfirmation}
-          onChange={(e) => {
-            setPasswordConfirmation(e.target.value);
-          }}
-          className={
-            messages.passwordConfirmation === ""
-              ? inputStyles
-              : inputStyles + errorStyles
-          }
-        ></input>
-        <small className={errorTextColor}>
-          {messages.passwordConfirmation}
-        </small>
+          {/* password confirmation */}
+          <label htmlFor="password_confirmation" className=" rounded-lg">
+            Confirm Password
+          </label>
+          <input
+            id="password_confirmation"
+            type="password"
+            value={passwordConfirmation}
+            onChange={(e) => {
+              setPasswordConfirmation(e.target.value);
+            }}
+            className={
+              messages.passwordConfirmation === ""
+                ? inputStyles
+                : inputStyles + errorStyles
+            }
+          ></input>
+          <small className={errorTextColor}>
+            {messages.passwordConfirmation}
+          </small>
 
-        <button
-          className="rounded-lg bg-purple-button my-4 py-1"
-          type="submit"
-          onClick={() => {
-            onRegister();
-          }}
-        >
-          Register
-        </button>
-      </div>
+          <button
+            className="rounded-lg bg-purple-button my-4 py-1"
+            type="submit"
+            // onSubmit={() => {
+            //   onRegister();
+            // }}
+          >
+            Register
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
