@@ -3,16 +3,32 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { validator } from "../validations/RegisterValidator";
+import { ErrorMessages } from "../types/ErrorMessages";
 
 const Register: NextPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [messages, setMessages] = useState({
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+  });
   const onRegister = () => {
-    validator(email, username, password, passwordConfirmation);
+    const errorMessages = validator(
+      username,
+      email,
+      password,
+      passwordConfirmation
+    );
+    // if (errorMessages.username && errorMessages.email && errorMessages.password && errorMessages.passwordConfirmation)
+    setMessages(errorMessages);
   };
-
+  const inputStyles = "rounded-lg text-black px-2 py-1";
+  const errorStyles = "border-2 border-red-600";
+  const errorTextColor = "text-red-300";
   return (
     <div className="flex flex-col h-full items-center justify-center">
       <div className="bg-navbar-grey flex flex-col p-4 rounded-lg">
@@ -22,6 +38,8 @@ const Register: NextPage = () => {
           className=" w-24 h-auto mx-auto"
         ></img>
         <h1 className="text-center text-2xl">Register</h1>
+
+        {/* username */}
         <label htmlFor="username" className=" rounded-lg">
           Username
         </label>
@@ -32,9 +50,13 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setUsername(e.target.value);
           }}
-          className="rounded-lg text-black px-2 py-1"
+          className={
+            messages.username === "" ? inputStyles : inputStyles + errorStyles
+          }
         ></input>
+        <small className={errorTextColor}>{messages.username}</small>
 
+        {/* email */}
         <label htmlFor="email" className=" rounded-lg">
           Email
         </label>
@@ -45,9 +67,13 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          className="rounded-lg text-black px-2 py-1"
+          className={
+            messages.email === "" ? inputStyles : inputStyles + errorStyles
+          }
         ></input>
+        <small className={errorTextColor}>{messages.email}</small>
 
+        {/* password */}
         <label htmlFor="password" className="rounded-lg">
           Password
         </label>
@@ -58,9 +84,13 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          className="rounded-lg text-black px-2 py-1"
+          className={
+            messages.password === "" ? inputStyles : inputStyles + errorStyles
+          }
         ></input>
+        <small className={errorTextColor}>{messages.password}</small>
 
+        {/* password confirmation */}
         <label htmlFor="password_confirmation" className=" rounded-lg">
           Confirm Password
         </label>
@@ -71,8 +101,16 @@ const Register: NextPage = () => {
           onChange={(e) => {
             setPasswordConfirmation(e.target.value);
           }}
-          className="rounded-lg text-black px-2 py-1"
+          className={
+            messages.passwordConfirmation === ""
+              ? inputStyles
+              : inputStyles + errorStyles
+          }
         ></input>
+        <small className={errorTextColor}>
+          {messages.passwordConfirmation}
+        </small>
+
         <button
           className="rounded-lg bg-purple-button my-4 py-1"
           type="submit"
