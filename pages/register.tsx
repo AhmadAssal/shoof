@@ -1,9 +1,6 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { validator } from "../validations/RegisterValidator";
-import { ErrorMessages } from "../types/ErrorMessages";
 
 const Register: NextPage = () => {
   const [username, setUsername] = useState("");
