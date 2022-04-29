@@ -1,72 +1,43 @@
+import { ErrorMessages } from "../types/ErrorMessages";
 export const validator = (
-  email: string,
   username: string,
+  email: string,
   password: string,
   passwordConfirmation: string
 ) => {
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let messages: ErrorMessages = {
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+  };
   if (!username) {
-    if (typeof window !== "undefined") {
-      window.alert("Your username can not be empty.");
-    }
-    return;
+    messages.username = "Your username can not be empty.";
   }
   if (username.includes(" ")) {
-    if (typeof window !== "undefined") {
-      window.alert("Your username can not include whitespace.");
-    }
-    return;
+    messages.username = "Your username can not include whitespace.";
   }
-
   if (!emailRegex.test(email)) {
-    if (typeof window !== "undefined") {
-      window.alert("Please enter a valid email.");
-    }
-    return;
-  }
-
-  if (!email) {
-    if (typeof window !== "undefined") {
-      window.alert("Your email can not be empty.");
-    }
-    return;
-  }
-  if (email.includes(" ")) {
-    if (typeof window !== "undefined") {
-      window.alert("Your email can not contain whitespace.");
-    }
-    return;
+    messages.email = "Please enter a valid email.";
   }
   if (!password) {
-    if (typeof window !== "undefined") {
-      window.alert("Your password can not be empty.");
-    }
-    return;
+    messages.password = "Your password can not be empty.";
   }
   if (password.includes(" ")) {
-    if (typeof window !== "undefined") {
-      window.alert("Your password can not include whitespace.");
-    }
-    return;
+    messages.password = "Your password can not include whitespace.";
   }
 
   if (!passwordConfirmation) {
-    if (typeof window !== "undefined") {
-      window.alert("Please confirm your password.");
-    }
-    return;
+    messages.passwordConfirmation = "Please confirm your password.";
   }
   if (passwordConfirmation.includes(" ")) {
-    if (typeof window !== "undefined") {
-      window.alert("Your password confirmation can not include whitespace.");
-    }
-    return;
+    messages.passwordConfirmation =
+      "Your password confirmation can not include whitespace.";
   }
 
   if (password !== passwordConfirmation) {
-    if (typeof window !== "undefined") {
-      window.alert("Your passwords do not match.");
-    }
-    return;
+    messages.passwordConfirmation = "Your passwords do not match.";
   }
+  return messages;
 };
