@@ -30,7 +30,7 @@ export const TrailerModal = ({
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
-      <Button onClick={onClick} text="Close"></Button>
+      <Button onClick={onClick} text="Close" disabled={false}></Button>
     </Modal>
   );
 };
