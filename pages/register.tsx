@@ -2,9 +2,8 @@ import type { NextPage } from "next";
 import { FormEvent, useState } from "react";
 import { validator } from "../validations/RegisterValidator";
 import "react-responsive-modal/styles.css";
-
 import { Modal } from "react-responsive-modal";
-
+import { Spinner } from "../components/Spinner";
 const Register: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
@@ -128,7 +127,14 @@ const Register: NextPage = () => {
           <small className={errorTextColor}>
             {messages.passwordConfirmation}
           </small>
-
+          <Modal
+            open={isLoading}
+            onClose={() => setIsLoading(false)}
+            center
+            closeIcon
+          >
+            <Spinner></Spinner>
+          </Modal>
           <button
             className="rounded-lg bg-purple-button my-4 py-1"
             type="submit"
@@ -137,15 +143,6 @@ const Register: NextPage = () => {
           </button>
         </div>
       </form>
-
-      <Modal
-        open={isLoading}
-        onClose={() => setIsLoading(false)}
-        center
-        closeIcon
-      >
-        <p className="text-black">just testing</p>
-      </Modal>
     </div>
   );
 };
