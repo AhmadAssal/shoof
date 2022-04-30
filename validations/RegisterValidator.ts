@@ -1,4 +1,4 @@
-import { ErrorMessages } from "../types/ErrorMessages";
+import { RegisterErrorMessages } from "../types/ErrorMessages";
 export const validator = (
   username: string,
   email: string,
@@ -6,7 +6,7 @@ export const validator = (
   passwordConfirmation: string
 ) => {
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  let messages: ErrorMessages = {
+  let messages: RegisterErrorMessages = {
     username: "",
     email: "",
     password: "",
