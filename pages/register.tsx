@@ -56,7 +56,7 @@ const Register: NextPage = () => {
         setIsLoading(true);
         Router.push("/");
       } catch (error: any) {
-        alert("Failed to register.");
+        alert("There is a user with that account.");
         setIsLoading(false);
       }
     }
