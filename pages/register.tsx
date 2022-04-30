@@ -6,6 +6,7 @@ import { Modal } from "react-responsive-modal";
 import { Spinner } from "../components/Spinner";
 import { register } from "../services/authentication/register";
 import { useLocalStorage } from "usehooks-ts";
+import Router from "next/router";
 
 const Register: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,13 +45,20 @@ const Register: NextPage = () => {
         passwordConfirmation: "",
       });
       setIsLoading(true);
-      const registerResponse = await register(
-        username,
-        email,
-        password,
-        passwordConfirmation
-      );
-      setToken(registerResponse?.data.token);
+      try {
+        const registerResponse = await register(
+          username,
+          email,
+          password,
+          passwordConfirmation
+        );
+        setToken(registerResponse?.data.token);
+        setIsLoading(true);
+        Router.push("/");
+      } catch (error: any) {
+        alert("Failed to register.");
+        setIsLoading(false);
+      }
     }
   };
   const inputStyles = "rounded-lg text-black px-2 py-1";
