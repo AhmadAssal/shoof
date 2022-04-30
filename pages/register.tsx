@@ -1,8 +1,12 @@
 import type { NextPage } from "next";
 import { FormEvent, useState } from "react";
 import { validator } from "../validations/RegisterValidator";
-import { alert } from "../utils/alert";
+import "react-responsive-modal/styles.css";
+
+import { Modal } from "react-responsive-modal";
+
 const Register: NextPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +32,7 @@ const Register: NextPage = () => {
       errorMessages.passwordConfirmation
     ) {
       setMessages(errorMessages);
-      alert("Please make sure all the input boxes have valid input.");
+      // alert("Please make sure all the input boxes have valid input.");
     } else {
       setMessages({
         username: "",
@@ -36,6 +40,7 @@ const Register: NextPage = () => {
         password: "",
         passwordConfirmation: "",
       });
+      setIsLoading(true);
     }
   };
   const inputStyles = "rounded-lg text-black px-2 py-1";
@@ -43,7 +48,7 @@ const Register: NextPage = () => {
   const errorTextColor = "text-red-300";
   return (
     <div className="flex flex-col h-full items-center justify-center">
-      <form action="" onSubmit={(e) => onRegister(e)}>
+      <form onSubmit={(e) => onRegister(e)}>
         <div className="bg-navbar-grey flex flex-col p-4 rounded-lg">
           <img
             src="/Logo.png"
@@ -127,14 +132,20 @@ const Register: NextPage = () => {
           <button
             className="rounded-lg bg-purple-button my-4 py-1"
             type="submit"
-            // onSubmit={() => {
-            //   onRegister();
-            // }}
           >
             Register
           </button>
         </div>
       </form>
+
+      <Modal
+        open={isLoading}
+        onClose={() => setIsLoading(false)}
+        center
+        closeIcon
+      >
+        <p className="text-black">just testing</p>
+      </Modal>
     </div>
   );
 };
