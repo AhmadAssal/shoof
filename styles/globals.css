@@ -10,4 +10,5 @@
 body {
   background-color: black;
   overflow: hidden;
+  max-width: 100%;
 }
