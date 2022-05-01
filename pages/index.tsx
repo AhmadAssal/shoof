@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-row grow  text-white w-screen">
       <VerticalNavbar className="grow-0 shrink-0 basis-36 md:flex md:flex-col hidden"></VerticalNavbar>
-      <div className="flex flex-col">
+      <div className="flex flex-col max-w-screen w-screen">
         <HorizontalNavbar></HorizontalNavbar>
       </div>
     </div>
