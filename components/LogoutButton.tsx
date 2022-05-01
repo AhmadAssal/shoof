@@ -33,7 +33,7 @@ export const LogoutButton = ({ className }: LogoutProps) => {
   };
   return (
     <button
-      className={"bg-gray-700 rounded-lg p-2 text-white m-2 "}
+      className={`bg-gray-700 rounded-lg p-2 text-white ${className}`}
       onClick={onClick}
     >
       Log Out
