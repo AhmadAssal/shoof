@@ -22,7 +22,6 @@ const Login: NextPage = () => {
     const errorMessages = validator(email, password);
     if (errorMessages.email || errorMessages.password) {
       setMessages(errorMessages);
-      // alert("Please make sure all the input boxes have valid input.");
     } else {
       setMessages({
         email: "",
