@@ -3,6 +3,7 @@ import "tailwindcss/tailwind.css";
 import logo from "../public/Logo.png";
 import Image from "next/image";
 import { LogoutButton } from "./LogoutButton";
+import { hasToken } from "../utils/HasToken";
 export const HorizontalNavbar = () => {
   return (
     <nav className="text-white flex h-16 w-full text-center items-center">
@@ -15,7 +16,11 @@ export const HorizontalNavbar = () => {
       <a href="/anime/" className="mx-4">
         Anime
       </a>
-      <LogoutButton className="ml-auto mr-2"></LogoutButton>
+      {hasToken() ? (
+        <LogoutButton className="ml-auto mr-2"></LogoutButton>
+      ) : (
+        <></>
+      )}
     </nav>
   );
 };
