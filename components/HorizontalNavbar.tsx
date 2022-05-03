@@ -1,7 +1,5 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
-import logo from "../public/Logo.png";
-import Image from "next/image";
 import { LogoutButton } from "./LogoutButton";
 import { hasToken } from "../utils/HasToken";
 export const HorizontalNavbar = () => {
