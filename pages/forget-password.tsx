@@ -18,7 +18,7 @@ const ForgetPassword: NextPage = () => {
     setIsLoading(true);
     try {
       const forgetPasswordResponse = await forgetPassword(email);
-      Router.push("/reset-password?token=" + forgetPasswordResponse.data.token);
+      Router.push("/reset-password");
     } catch (error: any) {
       setIsLoading(false);
       alert(
