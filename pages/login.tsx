@@ -7,6 +7,7 @@ import { Spinner } from "../components/Spinner";
 import { login } from "../services/authentication/login";
 import { useLocalStorage } from "usehooks-ts";
 import Router from "next/router";
+import Link from "next/link";
 
 const Login: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +70,6 @@ const Login: NextPage = () => {
               }
             ></input>
             <small className={errorTextColor}>{messages.email}</small>
-
             {/* password */}
             <label htmlFor="password" className="rounded-lg">
               Password
@@ -97,11 +97,20 @@ const Login: NextPage = () => {
               <Spinner></Spinner>
             </Modal>
             <button
-              className="rounded-lg bg-purple-button my-4 py-1"
+              className="rounded-lg bg-purple-button mt-4 py-1"
               type="submit"
             >
               Login
             </button>
+            <div className="text-center text-sm mt-2">
+              <Link href="/forget-password">
+                <a className="block">Forget Password</a>
+              </Link>
+
+              <Link href="/register">
+                <a>Don't have an account? Register instead.</a>
+              </Link>
+            </div>
           </div>
         </form>
       </div>
