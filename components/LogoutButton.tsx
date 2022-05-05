@@ -16,7 +16,7 @@ export const LogoutButton = ({ className }: LogoutProps) => {
     }
     try {
       const logoutResponse = await axios.post(
-        process.env.NEXT_PUBLIC_BACKEND! + "/api/logout",
+        process.env.NEXT_PUBLIC_BACKEND! + "api/logout",
         {},
         {
           withCredentials: true,

@@ -12,8 +12,10 @@ export const register = async (
     password,
     password_confirmation: passwordConfirmation,
   };
-  const tokenResponse = await axios.get("http://localhost/sanctum/csrf-cookie");
-  const url: string = process.env.NEXT_PUBLIC_REGISTER_URL!;
+  const tokenResponse = await axios.get(
+    process.env.NEXT_PUBLIC_BACKEND + "sanctum/csrf-cookie"
+  );
+  const url: string = process.env.NEXT_PUBLIC_BACKEND! + "api/register";
   const response = await axios.post(url, userData, { withCredentials: true });
   return response;
 };

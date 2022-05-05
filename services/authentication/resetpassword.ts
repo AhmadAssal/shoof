@@ -10,7 +10,7 @@ export const resetPassword = async (
     token,
     newPassword: password,
   };
-  const url = process.env.NEXT_PUBLIC_RESET_PASSWORD!;
+  const url = process.env.NEXT_PUBLIC_BACKEND! + "api/reset-password";
   const resetPasswordResponse = await axios.post(url, userData);
   return resetPasswordResponse;
 };

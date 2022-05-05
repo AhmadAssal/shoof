@@ -6,9 +6,9 @@ export const login = async (email: string, password: string) => {
     password,
   };
   const tokenResponse = await axios.get(
-    process.env.NEXT_PUBLIC_BACKEND + "/sanctum/csrf-cookie"
+    process.env.NEXT_PUBLIC_BACKEND + "sanctum/csrf-cookie"
   );
-  const url: string = process.env.NEXT_PUBLIC_LOGIN_URL!;
+  const url: string = process.env.NEXT_PUBLIC_BACKEND! + "api/login";
   const response = await axios.post(url, userData, { withCredentials: true });
   return response;
 };
