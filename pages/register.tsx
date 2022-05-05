@@ -7,6 +7,7 @@ import { Spinner } from "../components/Spinner";
 import { register } from "../services/authentication/register";
 import { useLocalStorage } from "usehooks-ts";
 import Router from "next/router";
+import Link from "next/link";
 
 const Register: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -165,6 +166,11 @@ const Register: NextPage = () => {
             >
               Register
             </button>
+            <Link href="/login">
+              <a className="underline">
+                Already have an account? Login instead.
+              </a>
+            </Link>
           </div>
         </form>
       </div>
