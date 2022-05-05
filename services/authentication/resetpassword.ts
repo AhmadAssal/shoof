@@ -7,6 +7,7 @@ export const resetPassword = async (
 ) => {
   const userData = {
     email,
+    token,
     newPassword: password,
   };
   const url = process.env.NEXT_PUBLIC_RESET_PASSWORD!;
