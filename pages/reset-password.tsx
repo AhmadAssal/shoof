@@ -23,6 +23,7 @@ const ResetPassword: NextPage = () => {
     try {
       const response = await resetPassword(email, token as string, password);
       Router.push("/login");
+      alert("Your password has been updated successfully.");
     } catch (error: any) {
       alert("failed to reset password");
     }
