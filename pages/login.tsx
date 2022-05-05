@@ -108,7 +108,7 @@ const Login: NextPage = () => {
               </Link>
 
               <Link href="/register">
-                <a>Don't have an account? Register instead.</a>
+                <a>Don&apos;t have an account? Register instead.</a>
               </Link>
             </div>
           </div>
