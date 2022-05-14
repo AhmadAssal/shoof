@@ -18,8 +18,10 @@ const Login: NextPage = () => {
     email: "",
     password: "",
   });
+  const [credentialsError, setCredentialsError] = useState("");
   const onLogin = async (e: FormEvent) => {
     e.preventDefault();
+    setCredentialsError("");
     const errorMessages = validator(email, password);
     if (errorMessages.email || errorMessages.password) {
       setMessages(errorMessages);
@@ -35,7 +37,15 @@ const Login: NextPage = () => {
         setIsLoading(true);
         Router.push("/");
       } catch (error: any) {
-        alert("The credentials you entered are incorrect.");
+        console.log();
+        if (error.response.status === 401) {
+          setCredentialsError("The credentials you entered are incorrect.");
+        } else if (error.response.status === 500) {
+          setCredentialsError(
+            "Our server has encountered a problem. Sorry about that! Please try again later."
+          );
+        } else setCredentialsError(error.message);
+
         setIsLoading(false);
       }
     }
@@ -55,7 +65,8 @@ const Login: NextPage = () => {
             ></img>
             <h1 className="text-center text-2xl">Login</h1>
             {/* email */}
-            <label htmlFor="email" className=" rounded-lg">
+            <h3 className={errorTextColor}>{credentialsError}</h3>
+            <label htmlFor="email" className="rounded-lg">
               Email
             </label>
             <input
