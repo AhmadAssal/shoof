@@ -15,6 +15,7 @@ const Register: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [registerResponse, setRegisterResponse] = useState("");
   const [token, setToken] = useLocalStorage("shoof-token", "");
   const [messages, setMessages] = useState({
     username: "",
@@ -24,6 +25,7 @@ const Register: NextPage = () => {
   });
   const onRegister = async (e: FormEvent) => {
     e.preventDefault();
+    setRegisterResponse("");
     const errorMessages = validator(
       username,
       email,
@@ -37,7 +39,6 @@ const Register: NextPage = () => {
       errorMessages.passwordConfirmation
     ) {
       setMessages(errorMessages);
-      // alert("Please make sure all the input boxes have valid input.");
     } else {
       setMessages({
         username: "",
@@ -57,7 +58,13 @@ const Register: NextPage = () => {
         setIsLoading(true);
         Router.push("/");
       } catch (error: any) {
-        alert("There is a user with that account.");
+        if (error.response.status == 422) {
+          setRegisterResponse(error.response.data.message);
+        } else if (error.response.status == 500) {
+          setRegisterResponse(
+            "Sorry, our server has encountered an error. Please try again later."
+          );
+        }
         setIsLoading(false);
       }
     }
@@ -76,7 +83,7 @@ const Register: NextPage = () => {
               className=" w-24 h-auto mx-auto"
             ></img>
             <h1 className="text-center text-2xl">Register</h1>
-
+            <h2 className={errorTextColor}>{registerResponse}</h2>
             {/* username */}
             <label htmlFor="username" className=" rounded-lg">
               Username
