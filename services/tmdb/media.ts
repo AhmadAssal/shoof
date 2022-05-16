@@ -63,12 +63,15 @@ export const search = async (query: string) => {
 
 export const getTrending = async () => {
   try {
-    const response = await axios.get(process.env.TMDB_TRENDING_URL as string, {
-      params: {
-        api_key: process.env.TMDB_API_KEY,
-        language: "en-US",
-      },
-    });
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_TMDB_TRENDING_URL as string,
+      {
+        params: {
+          api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+          language: "en-US",
+        },
+      }
+    );
     return { status: "Data retrieved", data: response.data };
   } catch (error: any) {
     return {
