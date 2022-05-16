@@ -14,6 +14,7 @@ const Login: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useLocalStorage("shoof-token", "");
+  const [user, setUser] = useLocalStorage("shoof-user", "");
   const [messages, setMessages] = useState({
     email: "",
     password: "",
@@ -33,6 +34,7 @@ const Login: NextPage = () => {
       setIsLoading(true);
       try {
         const loginResponse = await login(email, password);
+        setUser(loginResponse?.data.user);
         setToken(loginResponse?.data.token);
         setIsLoading(true);
         Router.push("/");
