@@ -5,4 +5,6 @@ export interface MediaCardProps {
   mediaId: number;
 
   watchlists: watchlist[];
+
+  className: string;
 }

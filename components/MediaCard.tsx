@@ -14,6 +14,7 @@ export const MediaCard = ({
   mediaId,
   mediaType,
   watchlists,
+  className,
 }: MediaCardProps) => {
   const [showTrailerModal, setShowTrailerModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
@@ -60,7 +61,7 @@ export const MediaCard = ({
           const videos = response.data.videos.results.filter(
             (video: TmdbVideoResponse) => video.type === "Trailer"
           );
-          setTrailerUrl(trailerUrl + videos[0].key);
+          setTrailerUrl(trailerUrl + videos[0]?.key);
           setPosterUrl(posterUrl + response.data.poster_path);
         }
       });
@@ -68,11 +69,11 @@ export const MediaCard = ({
   }, []);
 
   return (
-    <div className="rounded-lg bg-black w-auto max-w-pic ">
+    <div className={className + " rounded-lg bg-black w-auto max-w-pic"}>
       <img
-        className=" h-64 w-60 object-cover rounded-t-lg"
+        className="h-64 w-60 object-cover rounded-t-lg"
         src={posterUrl}
-        alt="The Dark Knight Poster"
+        alt={title + "Poster"}
       ></img>
       <ReactStars
         count={5}
