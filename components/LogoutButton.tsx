@@ -24,6 +24,7 @@ export const LogoutButton = ({ className }: LogoutProps) => {
         }
       );
       localStorage.removeItem("shoof-token");
+      localStorage.removeItem("shoof-user");
       Router.push("/login");
     } catch (error: any) {
       if (error.response.status === 401) {
