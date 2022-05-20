@@ -4,7 +4,7 @@ import { LogoutButton } from "./LogoutButton";
 import { hasToken } from "../utils/HasToken";
 export const HorizontalNavbar = () => {
   return (
-    <nav className="text-white flex h-16 w-full text-center items-center">
+    <nav className="text-white flex h-16 w-full text-center items-center sticky top-0 bg-black z-10">
       <a href="/cinema/" className="mx-4">
         Cinema
       </a>
@@ -15,7 +15,7 @@ export const HorizontalNavbar = () => {
         Anime
       </a>
       {hasToken() ? (
-        <LogoutButton className="ml-auto mr-2"></LogoutButton>
+        <LogoutButton className="ml-auto mr-8"></LogoutButton>
       ) : (
         <></>
       )}
