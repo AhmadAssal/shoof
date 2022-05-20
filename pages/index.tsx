@@ -11,6 +11,7 @@ import { getTrending } from "../services/tmdb/media";
 import { useState } from "react";
 import { MediaCard } from "../components/MediaCard";
 import { User } from "../types/User";
+import { getUser } from "../services/backend/user";
 const Home: NextPage = () => {
   const [trendingItems, setTrendingItems] = useState([]);
   const [user, setUser] = useState<User>({
@@ -35,6 +36,13 @@ const Home: NextPage = () => {
     if (typeof window !== "undefined") {
       setUser(JSON.parse(localStorage.getItem("shoof-user")!));
     }
+    const refreshUser = async () => {
+      const response = await getUser(
+        JSON.parse(localStorage.getItem("shoof-token")!)
+      );
+      setUser(response);
+    };
+    refreshUser();
     getTrendingItems();
   }, []);
   const router = useRouter();
