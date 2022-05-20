@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import "tailwindcss/tailwind.css";
 import "react-responsive-modal/styles.css";
@@ -39,8 +40,14 @@ export const ListModal = ({
     <Modal open={open} onClose={onCloseModal} center closeIcon>
       {watchlists.length ? (
         watchlists.map((pl, index) => (
-          <div key={pl.id}>
-            <label htmlFor={pl.name}> {pl.name}</label>
+          <div
+            key={pl.id}
+            className="grid grid-cols-2 items-center" // justify-items-center"
+          >
+            <label htmlFor={pl.name} className="text-black mx-4 justify-start">
+              {" "}
+              {pl.name}
+            </label>
             <input
               id={pl.name}
               type="checkbox"
@@ -55,7 +62,7 @@ export const ListModal = ({
                 setChosenWatchlists(newArr);
                 console.log(chosenWatchlists);
               }}
-              className="float-right"
+              className="items-center justify-self-center"
             ></input>
           </div>
         ))
