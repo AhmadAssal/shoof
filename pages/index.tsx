@@ -33,7 +33,6 @@ const Home: NextPage = () => {
       setTrendingItems(response.data.results);
     };
     if (typeof window !== "undefined") {
-      console.log(JSON.parse(localStorage.getItem("shoof-user")!));
       setUser(JSON.parse(localStorage.getItem("shoof-user")!));
     }
     getTrendingItems();
