@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import "tailwindcss/tailwind.css";
 import ReactStars from "react-stars";
@@ -83,9 +84,9 @@ export const MediaCard = ({
         edit={false}
         className="mx-auto w-full -my-6 flex justify-center "
       ></ReactStars>
-      <h1 className="text-white mx-auto text-center w-full mt-4 text-2xl">
+      <h3 className="text-white mx-auto text-center w-full mt-4 text-lg h-12 mb-4">
         {title}
-      </h1>
+      </h3>
       <div className="justify-center mx-auto items-center flex flex-wrap">
         <Button
           text={trailerExists ? "Trailer" : "No Trailer Found"}
