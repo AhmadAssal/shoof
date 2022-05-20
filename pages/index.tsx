@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       <VerticalNavbar className="md:flex md:flex-col hidden max-h-screen h-full sticky left-0 top-0 bottom-0"></VerticalNavbar>
       <div className="flex flex-col w-full max-w-full">
         <HorizontalNavbar></HorizontalNavbar>
-        <div className="flex flex-row flex-wrap max-w-full w-full">
+        <div className="flex flex-row flex-wrap max-w-full w-full ml-12">
           {trendingItems.map((item: any) => (
             <MediaCard
               mediaId={item.id}
