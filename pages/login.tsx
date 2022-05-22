@@ -39,7 +39,6 @@ const Login: NextPage = () => {
         setIsLoading(true);
         Router.push("/");
       } catch (error: any) {
-        console.log();
         if (error.response.status === 401) {
           setCredentialsError("The credentials you entered are incorrect.");
         } else if (error.response.status === 500) {
