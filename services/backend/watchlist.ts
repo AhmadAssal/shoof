@@ -28,3 +28,29 @@ export const addItemToWatchlist = async (
     };
   }
 };
+
+export const removeItemFromWatchlist = async (
+  tmdb_id: number,
+  watchlist_id: number,
+  token: string
+) => {
+  const userData = {
+    tmdb_id,
+    watchlist_id,
+  };
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  const url: string =
+    process.env.NEXT_PUBLIC_BACKEND! + "api/remove-watchlist-item";
+
+  try {
+    const response = await axios.post(url, userData, config);
+    return response;
+  } catch (error: any) {
+    return {
+      error: error.message,
+    };
+  }
+};
