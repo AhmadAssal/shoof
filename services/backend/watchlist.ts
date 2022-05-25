@@ -1,4 +1,5 @@
 import axios from "axios";
+import { WatchlistWithItems } from "../../interfaces/WatchlistWithItems";
 
 export const addItemToWatchlist = async (
   tmdb_id: number,
@@ -53,4 +54,15 @@ export const removeItemFromWatchlist = async (
       error: error.message,
     };
   }
+};
+
+export const isInWatchlist = (
+  tmdb_id: number,
+  watchlist: WatchlistWithItems
+) => {
+  const items = watchlist.items;
+
+  const found = items.find((item) => item.tmdb_id === tmdb_id);
+
+  return found ? true : false;
 };
