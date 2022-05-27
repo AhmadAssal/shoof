@@ -11,6 +11,7 @@ import { watchlist } from "../interfaces/watchlist";
 import { MediaCardProps } from "../interfaces/MediaCardProps";
 import { getMovie, getShow } from "../services/tmdb/media";
 import { TmdbVideoResponse } from "../interfaces/tmdbVideoResponse";
+import { isInWatchlist } from "../services/backend/watchlist";
 export const MediaCard = ({
   mediaId,
   mediaType,
@@ -119,8 +120,8 @@ export const MediaCard = ({
           }}
           watchlists={watchlists}
           onAdd={() => {}}
-          isInWatchlist={() => true}
-          mediaId={34}
+          isInWatchlist={isInWatchlist}
+          mediaId={mediaId}
         ></ListModal>
       </div>
     </div>
