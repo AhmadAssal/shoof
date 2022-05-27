@@ -52,7 +52,6 @@ export const ListModal = ({
                 newArr[index] = 0;
               } else newArr[index] = 1;
               setChosenWatchlists(newArr);
-              console.log(chosenWatchlists);
             }}
             className="float-right"
           ></input>
