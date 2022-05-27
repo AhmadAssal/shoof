@@ -28,6 +28,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (!hasToken()) {
       router.push("/login");
+      return;
     }
     const getTrendingItems = async () => {
       const response = await getTrending();
@@ -52,15 +53,19 @@ const Home: NextPage = () => {
       <div className="flex flex-col w-full max-w-full">
         <HorizontalNavbar></HorizontalNavbar>
         <div className="flex flex-row flex-wrap max-w-full w-full ml-12">
-          {trendingItems.map((item: any) => (
-            <MediaCard
-              mediaId={item.id}
-              mediaType={item.media_type == "movie" ? "movie" : "show"}
-              watchlists={user.watchlists}
-              key={item.id}
-              className="m-4"
-            ></MediaCard>
-          ))}
+          {user ? (
+            trendingItems.map((item: any) => (
+              <MediaCard
+                mediaId={item.id}
+                mediaType={item.media_type == "movie" ? "movie" : "show"}
+                watchlists={user.watchlists}
+                key={item.id}
+                className="m-4"
+              ></MediaCard>
+            ))
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
