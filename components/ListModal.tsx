@@ -6,13 +6,14 @@ import { Modal } from "react-responsive-modal";
 import { Button } from "./Button";
 import { useState } from "react";
 import { watchlist } from "../interfaces/watchlist";
+import { WatchlistWithItems } from "../interfaces/WatchlistWithItems";
 interface ListModalProps {
   onCloseButton: () => void;
   open: boolean;
   onCloseModal: () => void;
-  watchlists: watchlist[];
+  watchlists: WatchlistWithItems[];
   onAdd: () => any;
-  isInWatchlist: (mediaId: number, watchlistId: number) => boolean;
+  isInWatchlist: (mediaId: number, watchlistId: WatchlistWithItems) => boolean;
   mediaId: number;
 }
 
@@ -29,13 +30,12 @@ export const ListModal = ({
   useEffect(() => {
     const newArr = new Array(watchlists.length).fill(0);
     watchlists.forEach((watchlist, index) => {
-      if (isInWatchlist(mediaId, watchlist.id)) {
+      if (isInWatchlist(mediaId, watchlist)) {
         newArr[index] = 1;
         setChosenWatchlists(newArr);
       }
     });
   }, []);
-
   return (
     <Modal open={open} onClose={onCloseModal} center closeIcon>
       {watchlists.length ? (
@@ -60,7 +60,6 @@ export const ListModal = ({
                   newArr[index] = 0;
                 } else newArr[index] = 1;
                 setChosenWatchlists(newArr);
-                console.log(chosenWatchlists);
               }}
               className="items-center justify-self-center"
             ></input>

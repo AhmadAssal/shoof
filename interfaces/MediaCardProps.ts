@@ -1,10 +1,11 @@
 import { watchlist } from "../interfaces/watchlist";
+import { WatchlistWithItems } from "./WatchlistWithItems";
 export interface MediaCardProps {
   mediaType: string;
 
   mediaId: number;
 
-  watchlists: watchlist[];
+  watchlists: WatchlistWithItems[];
 
   className: string;
 }
