@@ -7,12 +7,16 @@ import { Button } from "./Button";
 import { useState } from "react";
 import { watchlist } from "../interfaces/watchlist";
 import { WatchlistWithItems } from "../interfaces/WatchlistWithItems";
+import {
+  addItemToWatchlist,
+  removeItemFromWatchlist,
+} from "../services/backend/watchlist";
+
 interface ListModalProps {
   onCloseButton: () => void;
   open: boolean;
   onCloseModal: () => void;
   watchlists: WatchlistWithItems[];
-  onAdd: () => any;
   isInWatchlist: (mediaId: number, watchlistId: WatchlistWithItems) => boolean;
   mediaId: number;
 }
@@ -21,7 +25,6 @@ export const ListModal = ({
   open,
   onCloseModal,
   watchlists,
-  onAdd,
   isInWatchlist,
   mediaId,
 }: ListModalProps) => {
@@ -76,7 +79,7 @@ export const ListModal = ({
           onClick={() => onCloseModal()}
           disabled={false}
         ></Button>
-        <Button text="Add" onClick={() => onAdd()} disabled={false}></Button>
+        {/* <Button text="Add" onClick={() => onAdd()} disabled={false}></Button> */}
       </div>
     </Modal>
   );

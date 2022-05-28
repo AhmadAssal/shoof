@@ -119,7 +119,6 @@ export const MediaCard = ({
             setShowListModal(false);
           }}
           watchlists={watchlists}
-          onAdd={() => {}}
           isInWatchlist={isInWatchlist}
           mediaId={mediaId}
         ></ListModal>
